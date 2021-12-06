@@ -1,19 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import ContactCard from "./ContactCard";
 
-const ContactList = () => {
-  const [contacts, setContact] = useState([
-    {
-      id: 1,
-      name: "Mo",
-      email: "mo@test.com",
-    },
-    {
-      id: 2,
-      name: "Farheen",
-      email: "farheen@test.com",
-    },
-  ]);
+const ContactList = (props) => {
   return (
     <table className="table m-3">
       <thead>
@@ -24,9 +12,10 @@ const ContactList = () => {
         </tr>
       </thead>
       <tbody>
-        {contacts.map((contact) => {
+        {props.contacts.map((contact) => {
           return (
             <ContactCard
+              key={contact.id}
               id={contact.id}
               name={contact.name}
               email={contact.email}
