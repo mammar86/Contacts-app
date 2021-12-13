@@ -2,14 +2,20 @@ import React, { useState } from "react";
 
 const AddContact = (props) => {
   const [newContact, setNewContact] = useState({
+    id: "",
     name: "",
     email: "",
   });
 
   const add = (e) => {
     e.preventDefault();
-    props.addToContacts(newContact);
+    if (newContact.name.length === 0 || newContact.email.length === 0) {
+      alert("field can't be empty");
+    } else {
+      props.addToContacts(newContact);
+    }
     setNewContact({
+      id: "",
       name: "",
       email: "",
     });

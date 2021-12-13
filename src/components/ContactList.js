@@ -2,6 +2,9 @@ import React from "react";
 import ContactCard from "./ContactCard";
 
 const ContactList = (props) => {
+  console.log(props);
+  const deleteContactHandler = (id) => props.getContactId(id);
+
   return (
     <table className="table m-3">
       <thead>
@@ -12,13 +15,14 @@ const ContactList = (props) => {
         </tr>
       </thead>
       <tbody>
-        {props.contacts.map((contact) => {
+        {props.contacts.map((contact, i) => {
           return (
             <ContactCard
-              key={contact.id}
               id={contact.id}
+              number={i + 1}
               name={contact.name}
               email={contact.email}
+              clickHandler={deleteContactHandler}
             />
           );
         })}

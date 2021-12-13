@@ -3,13 +3,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const ContactCard = (props) => {
+  const { id, number, name, email } = props;
   return (
     <tr>
-      <th scope="row">{props.id}</th>
-      <td>{props.name}</td>
-      <td>{props.email}</td>
+      <th scope="row">{number}</th>
+      <td>{name}</td>
+      <td>{email}</td>
       <td>
-        <FontAwesomeIcon icon={faTrashAlt} />
+        <FontAwesomeIcon
+          icon={faTrashAlt}
+          onClick={() => props.clickHandler(id)}
+        />
       </td>
     </tr>
   );
